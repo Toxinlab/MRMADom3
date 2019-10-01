@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MRMADom3</string>
+    <string name="filter1text">Search by Name</string>
+    <string name="filter2text">Year</string>
+    <string name="filter3text">Min. Score</string>
+    <string name="seeMoreButton">See More</string>
 </resources>
