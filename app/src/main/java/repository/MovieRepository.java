@@ -17,9 +17,9 @@ public class MovieRepository {
     private MutableLiveData<Resource<List<Movie>>> mMovieLiveData;
 
 
-    public MovieRepository(MovieApi mMovieApi, MutableLiveData<Resource<List<Movie>>> mMovieLiveData) {
-        this.mMovieApi = mMovieApi;
-        this.mMovieLiveData = mMovieLiveData;
+    public MovieRepository() {
+        this.mMovieApi = new MovieApi();
+        this.mMovieLiveData = new MutableLiveData<>();
     }
 
     public MutableLiveData<Resource<List<Movie>>> getMovieLiveData() {

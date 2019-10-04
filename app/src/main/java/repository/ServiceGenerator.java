@@ -18,8 +18,7 @@ public class ServiceGenerator {
     //I am (security) stuff.
     private static final HttpLoggingInterceptor sHTTP_LOGGING_INTERCEPTOR =
             new HttpLoggingInterceptor().setLevel
-                    (BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY :
-                            HttpLoggingInterceptor.Level.NONE);
+                    (HttpLoggingInterceptor.Level.BODY );
 
 
     private static OkHttpClient.Builder sHBuilder = new OkHttpClient.Builder()
