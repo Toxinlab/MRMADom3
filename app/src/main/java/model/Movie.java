@@ -1,13 +1,30 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Movie {
 
+    @SerializedName("id")
     private int mId;
+    @SerializedName("release_date")
     private String mYear;
+    @SerializedName("title")
     private String mTitle;
+    @SerializedName("director")
     private String mDirector;
+    @SerializedName("rt_score")
     private int mScore;
+    @SerializedName("url")
     private String mFilmUrl;
+
+    public Movie(int mId, String mYear, String mTitle, String mDirector, int mScore, String mFilmUrl) {
+        this.mId = mId;
+        this.mYear = mYear;
+        this.mTitle = mTitle;
+        this.mDirector = mDirector;
+        this.mScore = mScore;
+        this.mFilmUrl = mFilmUrl;
+    }
 
     public int getmId() {
         return mId;
