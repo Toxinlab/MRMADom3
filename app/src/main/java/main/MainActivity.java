@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -32,12 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
         mainView.setLayoutManager(new LinearLayoutManager(this));
 
-
         movieAdapter = new MovieAdapter();
 
         mainView.setAdapter(movieAdapter);
-
-
+        mainView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -51,8 +51,14 @@ public class MainActivity extends AppCompatActivity {
 //                if(listResource.isSucc()){
 //                    Toast.makeText(this, "Data fetched from the server!", Toast.LENGTH_LONG).show();
 //                }
+
+                for (int i = 0; i <= listResource.getData().size(); i++){
+                    Log.v("ALO", ""+listResource.getData().get(i));
+                }
                 movieAdapter.setData(listResource.getData());
+
             }
         });
+
     }
 }

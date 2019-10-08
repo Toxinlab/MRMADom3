@@ -1,5 +1,6 @@
 package dumb;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         holder.mScoreTV.setText(movie.getmScore());
         holder.mDirectorTV.setText(movie.getmDirector());
 
+
     }
 
     @Override
@@ -52,6 +54,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         mDataSet.clear();
         mDataSet.addAll(movies);
         result.dispatchUpdatesTo(this);
+
 
     }
 }

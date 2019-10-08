@@ -1,5 +1,7 @@
 package repository;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
@@ -37,12 +39,17 @@ public class MovieRepository {
             public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
                 Resource<List<Movie>> resource = new Resource<>(response.body(), true);
                 mMovieLiveData.setValue(resource);
+                Log.v("ALO1", "USEPO");
+
+
             }
 
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
-                Resource<List<Movie>> resource = new Resource<List<Movie>>(new ArrayList<Movie>(), true);
+                Resource<List<Movie>> resource = new Resource<List<Movie>>(new ArrayList<Movie>(), false);
                 mMovieLiveData.setValue(resource);
+                Log.v("ALO1", "NISAM");
+
             }
         });
     }
