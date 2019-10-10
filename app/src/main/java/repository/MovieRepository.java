@@ -35,11 +35,15 @@ public class MovieRepository {
 
     public void fetchMovieData(){
         mMovieApi.getMovies().enqueue(new Callback<List<Movie>>() {
+
             @Override
             public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
                 Resource<List<Movie>> resource = new Resource<>(response.body(), true);
                 mMovieLiveData.setValue(resource);
-                Log.v("ALO1", "USEPO");
+                Log.e("ALO1", "USEPO");
+                for (int i = 0; i <= response.body().size(); i++){
+                    Log.e("ALO", ""+response.body().get(i));
+                }
 
 
             }
@@ -48,7 +52,7 @@ public class MovieRepository {
             public void onFailure(Call<List<Movie>> call, Throwable t) {
                 Resource<List<Movie>> resource = new Resource<List<Movie>>(new ArrayList<Movie>(), false);
                 mMovieLiveData.setValue(resource);
-                Log.v("ALO1", "NISAM");
+                Log.e("ALO1", "NISAM");
 
             }
         });

@@ -8,6 +8,6 @@ import retrofit2.http.GET;
 
 public interface MovieService {
 
-    @GET("films")
+    @GET("films?limit=2")
     public Call<List<Movie>> getMovies();
 }

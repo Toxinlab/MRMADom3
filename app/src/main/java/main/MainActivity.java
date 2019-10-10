@@ -48,12 +48,11 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.getMovies().observe(this, new Observer<Resource<List<Movie>>>() {
             @Override
             public void onChanged(Resource<List<Movie>> listResource) {
-//                if(listResource.isSucc()){
-//                    Toast.makeText(this, "Data fetched from the server!", Toast.LENGTH_LONG).show();
-//                }
-
-                for (int i = 0; i <= listResource.getData().size(); i++){
-                    Log.v("ALO", ""+listResource.getData().get(i));
+                if(listResource.isSucc()){
+                    Toast.makeText(getBaseContext(), "Data fetched from the server!", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getBaseContext(), "Data fetch failed!", Toast.LENGTH_LONG).show();
+                    Log.e("TAG", "Something went terribly wrong, check your connection!");
                 }
                 movieAdapter.setData(listResource.getData());
 

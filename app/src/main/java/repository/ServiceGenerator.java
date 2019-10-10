@@ -1,11 +1,8 @@
 package repository;
 
 import java.util.concurrent.TimeUnit;
-
-
 import acs.castac.ricsvil.mrmadom3.BuildConfig;
 import okhttp3.OkHttpClient;
-
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -15,7 +12,7 @@ public class ServiceGenerator {
     //Where we are going, we dont need security stuff
 
     private static final boolean DEBUG = true;
-    private static final int READ_TIMEOUT = 10;
+    private static final int READ_TIMEOUT = 60;
 
     //I am (security) stuff.
     private static final HttpLoggingInterceptor sHttpLoggingInterceptor =
