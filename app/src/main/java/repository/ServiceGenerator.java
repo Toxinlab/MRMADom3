@@ -34,7 +34,7 @@ public class ServiceGenerator {
 
     private static Retrofit sRetrofit = sRetroBuilder.client(sOkHttpClient).build();
 
-    public  <S> S createService(Class<S> serviceClass){
+    public static <S> S createService(Class<S> serviceClass){
         return sRetrofit.create(serviceClass);
     }
 
