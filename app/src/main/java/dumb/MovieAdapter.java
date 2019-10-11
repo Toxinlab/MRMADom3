@@ -37,7 +37,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         Movie movie = mDataSet.get(position);
         holder.mNameTV.setText(movie.getmTitle());
         holder.mYearTV.setText(movie.getmYear());
-        holder.mScoreTV.setText(movie.getmScore());
+        holder.mScoreTV.setText(String.valueOf(movie.getmScore()));
         holder.mDirectorTV.setText(movie.getmDirector());
 
 

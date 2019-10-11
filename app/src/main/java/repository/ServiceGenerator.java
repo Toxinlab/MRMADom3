@@ -8,6 +8,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
+
+
     private static final String BASE_URL = "https://ghibliapi.herokuapp.com/";
     //Where we are going, we dont need security stuff
 
@@ -32,7 +34,7 @@ public class ServiceGenerator {
 
     private static Retrofit sRetrofit = sRetroBuilder.client(sOkHttpClient).build();
 
-    public static <S> S createService(Class<S> serviceClass){
+    public  <S> S createService(Class<S> serviceClass){
         return sRetrofit.create(serviceClass);
     }
 
