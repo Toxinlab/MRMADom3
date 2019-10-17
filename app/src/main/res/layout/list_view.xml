@@ -50,7 +50,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:padding="30dp" />
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@drawable/circle"/>
 
 
     <Button

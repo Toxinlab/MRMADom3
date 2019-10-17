@@ -86,6 +86,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             mDirectorTV = itemView.findViewById(R.id.directorView);
             mScoreTV = itemView.findViewById(R.id.scoreView);
 
+            Movie tempMovie = mDataSet.get(position);
+
+            if(tempMovie.getmScore()>66){
+                mScoreTV.setBackground(R.drawable.circle_meh);
+            }
+
+
             mSeeMoreButton = itemView.findViewById(R.id.seeMoreButton);
             mSeeMoreButton.setOnClickListener(new View.OnClickListener() {
                 @Override
