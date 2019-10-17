@@ -4,6 +4,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -16,9 +18,11 @@ import acs.castac.ricsvil.mrmadom3.R;
 import model.Movie;
 import util.MovieDiffCallback;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private List<Movie> mDataSet;
+
+    private OnButtonClickCallback onButtonClickCallback;
 
     public MovieAdapter() {
         mDataSet = new ArrayList<>();
@@ -56,5 +60,45 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         result.dispatchUpdatesTo(this);
 
 
+    }
+
+    public OnButtonClickCallback getOnButtonClickCallback() {
+        return onButtonClickCallback;
+    }
+
+    public void setOnButtonClickCallback(OnButtonClickCallback onButtonClickCallback) {
+        this.onButtonClickCallback = onButtonClickCallback;
+    }
+
+    public class MovieViewHolder extends RecyclerView.ViewHolder {
+
+        TextView mNameTV;
+        TextView mYearTV;
+        TextView mDirectorTV;
+        TextView mScoreTV;
+        Button mSeeMoreButton;
+
+        public MovieViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            mNameTV = itemView.findViewById(R.id.titleView);
+            mYearTV = itemView.findViewById(R.id.yearView);
+            mDirectorTV = itemView.findViewById(R.id.directorView);
+            mScoreTV = itemView.findViewById(R.id.scoreView);
+
+            mSeeMoreButton = itemView.findViewById(R.id.seeMoreButton);
+            mSeeMoreButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION){
+                        if (onButtonClickCallback != null) {
+                            Movie tempMovie = mDataSet.get(position);
+                            onButtonClickCallback.onButtonClick(tempMovie);
+                        }
+                    }
+                }
+            });
+        }
     }
 }
