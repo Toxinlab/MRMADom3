@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -30,12 +31,18 @@ import static java.security.AccessController.getContext;
 public class MainActivity extends AppCompatActivity {
 
     private MovieAdapter movieAdapter;
+    public static Drawable circleMeh;
+    public static Drawable circleBad;
+    public static Drawable circleGood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        circleBad = getResources().getDrawable(R.drawable.circle,null);
+        circleGood = getResources().getDrawable(R.drawable.circle_good,null);
+        circleMeh = getResources().getDrawable(R.drawable.circle_meh,null);
 
     }
 
@@ -99,5 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 }

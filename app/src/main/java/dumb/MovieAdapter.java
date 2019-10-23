@@ -1,5 +1,6 @@
 package dumb;
 
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import acs.castac.ricsvil.mrmadom3.R;
+import main.MainActivity;
 import model.Movie;
 import util.MovieDiffCallback;
 
@@ -26,6 +30,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public MovieAdapter() {
         mDataSet = new ArrayList<>();
+
     }
 
     @NonNull
@@ -86,11 +91,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             mDirectorTV = itemView.findViewById(R.id.directorView);
             mScoreTV = itemView.findViewById(R.id.scoreView);
 
-            Movie tempMovie = mDataSet.get(position);
 
-            if(tempMovie.getmScore()>66){
-                mScoreTV.setBackground(R.drawable.circle_meh);
-            }
 
 
             mSeeMoreButton = itemView.findViewById(R.id.seeMoreButton);
@@ -106,6 +107,19 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     }
                 }
             });
+
+            int position = getAdapterPosition();
+            Movie tempMovie = mDataSet.get(position);
+
+            if(tempMovie.getmScore()>66 && tempMovie.getmScore()<90){
+
+                mScoreTV.setBackground(MainActivity.circleMeh);
+            }
+
+            if(tempMovie.getmScore()>90){
+
+                mScoreTV.setBackground(MainActivity.circleGood);
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ public class MovieAsItsown {
     private String mId;
 
     @NonNull
-    @ColumnInfo(year = "Year")
+    //@ColumnInfo(year = "Year")
     private String mYear;
 
 
