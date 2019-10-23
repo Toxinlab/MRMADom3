@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ import repository.MovieRepository;
 public class MainViewModel extends AndroidViewModel {
 
     private MovieRepository movieRepository;
+//    private MutableLiveData<String> mNameFilterLiveData;
+//    private MutableLiveData<List<Movie>>
 
     public MainViewModel(@NonNull Application application) {
         super(application);
@@ -26,5 +29,9 @@ public class MainViewModel extends AndroidViewModel {
     }
     public void refreshMovies(){
         movieRepository.refreshMovies();
+    }
+
+    public void setFilter(){
+
     }
 }

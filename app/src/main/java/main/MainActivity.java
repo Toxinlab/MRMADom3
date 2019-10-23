@@ -6,9 +6,14 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -16,6 +21,7 @@ import java.util.List;
 
 import acs.castac.ricsvil.mrmadom3.R;
 import dumb.MovieAdapter;
+import dumb.OnButtonClickCallback;
 import model.Movie;
 import model.Resource;
 
@@ -29,15 +35,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
 
-        RecyclerView mainView = findViewById(R.id.recyclerView);
-
-        mainView.setLayoutManager(new LinearLayoutManager(this));
-
-        movieAdapter = new MovieAdapter();
-
-        mainView.setAdapter(movieAdapter);
-        mainView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -59,5 +58,46 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void init(){
+
+        MainViewModel mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        RecyclerView mainView = findViewById(R.id.recyclerView);
+
+        mainView.setLayoutManager(new LinearLayoutManager(this));
+
+        movieAdapter = new MovieAdapter();
+
+        movieAdapter.setOnButtonClickCallback(new OnButtonClickCallback() {
+            @Override
+            public void onButtonClick(Movie movie) {
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(movie.getmFilmUrl()));
+                startActivity(myIntent);
+            }
+        });
+
+        mainView.setAdapter(movieAdapter);
+        mainView.setVisibility(View.VISIBLE);
+
+        EditText nameFilter = findViewById(R.id.filter1);
+        nameFilter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String filter = nameFilter.getText().toString();
+                //mainViewModel.setFilter(filter);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 }
