@@ -48,8 +48,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         holder.mYearTV.setText(movie.getmYear());
         holder.mScoreTV.setText(String.valueOf(movie.getmScore()));
         holder.mDirectorTV.setText(movie.getmDirector());
-
-
+        setCircleColor(holder);
     }
 
     @Override
@@ -91,9 +90,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             mDirectorTV = itemView.findViewById(R.id.directorView);
             mScoreTV = itemView.findViewById(R.id.scoreView);
 
-
-
-
             mSeeMoreButton = itemView.findViewById(R.id.seeMoreButton);
             mSeeMoreButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,18 +104,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 }
             });
 
-            int position = getAdapterPosition();
-            Movie tempMovie = mDataSet.get(position);
-
-            if(tempMovie.getmScore()>66 && tempMovie.getmScore()<90){
-
-                mScoreTV.setBackground(MainActivity.circleMeh);
-            }
-
-            if(tempMovie.getmScore()>90){
-
-                mScoreTV.setBackground(MainActivity.circleGood);
-            }
         }
+    }
+
+    private void setCircleColor(MovieViewHolder holder){
+        int tempScore = Integer.parseInt(holder.mScoreTV.getText().toString());
+        holder.mScoreTV.setBackground(MainActivity.circleBad);
+
+        if(tempScore>66 && tempScore<90){
+
+            holder.mScoreTV.setBackground(MainActivity.circleMeh);
+        }
+
+        if(tempScore>90){
+
+            holder.mScoreTV.setBackground(MainActivity.circleGood);
+        }
+
     }
 }
