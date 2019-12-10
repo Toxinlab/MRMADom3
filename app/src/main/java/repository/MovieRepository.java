@@ -41,11 +41,6 @@ public class MovieRepository {
                     Resource<List<Movie>> resource = new Resource<>(response.body(), true);
                     mMovieLiveData.setValue(resource);
                     Log.e("ALO1", "USEPO");
-//                    for (int i = 0; i <= response.body().size(); i++){
-//                        Log.e("ALO", ""+response.body().get(i));
-//                    }
-
-
                 }
 
                 @Override
@@ -53,7 +48,6 @@ public class MovieRepository {
                     Resource<List<Movie>> resource = new Resource<List<Movie>>(new ArrayList<Movie>(), false);
                     mMovieLiveData.setValue(resource);
                     t.printStackTrace();
-
             }
         });
     }

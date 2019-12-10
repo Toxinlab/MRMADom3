@@ -7,23 +7,26 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class MovieAsItsown {
+@Entity(tableName = "Movie")
+public class MovieRoom {
 
 
     @PrimaryKey
     private String mId;
-
-    @NonNull
-    //@ColumnInfo(year = "Year")
+    @ColumnInfo(name = "year")
     private String mYear;
 
-
+    @ColumnInfo(name = "title")
     private String mTitle;
 
+    @ColumnInfo(name = "director")
     private String mDirector;
 
+    @ColumnInfo(name = "score")
     private int mScore;
 
+    @ColumnInfo(name = "url")
     private String mFilmUrl;
+
+
 }
